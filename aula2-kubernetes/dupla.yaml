@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dupla-barbara-e-luana
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sentiment-api
+  namespace: dupla-barbara-e-luana
+  labels:
+    app: sentiment-api
+    dupla: barbara-e-luana
+    turma: "2026-2"
+spec:
+  containers:
+    - name: api
+      image: ghcr.io/rodolfo-s-antunes/sentiment-api:v2
+      ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sentiment-api
+  namespace: dupla-barbara-e-luana
+spec:
+  type: LoadBalancer
+  selector:
+    dupla: barbara-e-luana
+  ports:
+    - port: 80
+      targetPort: 8000
