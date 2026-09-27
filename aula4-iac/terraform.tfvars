@@ -8,3 +8,7 @@ dupla = "barbaraluana"
 
 # A prática começa em v2 e troca para v3 na etapa 3.
 imagem_tag = "v2"
+
+# Brazil South sem capacidade de Standard_D2as_v7 (OverconstrainedAllocationRequest).
+# O default de node_vm_size continua Standard_D2as_v7; aqui só a sobrescrita.
+node_vm_size = "Standard_D2s_v6"
